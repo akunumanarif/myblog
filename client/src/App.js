@@ -1,15 +1,47 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider, Router } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Router,
+  Outlet,
+} from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Api from "./pages/Api";
 import Single from "./pages/Single";
 import Write from "./pages/Write";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+const Layout = () => {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>This is Home</div>,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/post/:id",
+        element: <Single />,
+      },
+      {
+        path: "/write",
+        element: <Write />,
+      },
+    ],
   },
   {
     path: "/register",
@@ -19,28 +51,19 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-  {
-    path: "/api",
-    element: <Api />,
-  },
-  {
-    path: "/Write",
-    element: <Single />,
-  },
-  {
-    path: "/write",
-    element: <Write />,
-  },
+
+  // {
+  //   path: "/api",
+  //   element: <Api />,
+  // },
 ]);
 
 function App() {
   return (
-    <div>
-      <RouterProvider router={router} />
+    <div className="app">
+      <div className="container">
+        <RouterProvider router={router} />
+      </div>
     </div>
   );
 }
