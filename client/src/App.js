@@ -1,7 +1,21 @@
+import React from "react";
+import { createBrowserRouter, RouterProvider, Router } from "react-router-dom";
+import Register from "./pages/Register";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <div>This is Home</div>,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+]);
+
 function App() {
   return (
     <div>
-      Hello world!
+      <RouterProvider router={router} />
     </div>
   );
 }
