@@ -15,6 +15,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./style.scss";
 
+// ? Layout Component
+
 const Layout = () => {
   return (
     <>
@@ -24,6 +26,8 @@ const Layout = () => {
     </>
   );
 };
+
+// ? Router Function
 
 const router = createBrowserRouter([
   {
