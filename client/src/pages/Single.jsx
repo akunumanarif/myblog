@@ -85,8 +85,8 @@ const Single = () => {
                 }}
                 ></p>       */}
       </div>
-      <Menu></Menu>
-      {/* <Menu cat={post.cat}/> */}
+      {/* <Menu></Menu> */}
+      <Menu cat={post.cat} />
     </div>
   );
 };
