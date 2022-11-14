@@ -1,46 +1,54 @@
 // import axios from "axios";
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 
 const posts = [
-    {
-      id: 1,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
-      img: "https://images.pexels.com/photos/7008010/pexels-photo-7008010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-    {
-      id: 2,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
-      img: "https://images.pexels.com/photos/6489663/pexels-photo-6489663.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-    {
-      id: 3,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
-      img: "https://images.pexels.com/photos/4230630/pexels-photo-4230630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-    {
-      id: 4,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
-      img: "https://images.pexels.com/photos/6157049/pexels-photo-6157049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-  ];
+  {
+    id: 1,
+    title: "ONE Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    desc:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+    img:
+      "https://img.freepik.com/free-photo/professional-programmer-working-late-dark-office_1098-18705.jpg?size=626&ext=jpg",
+  },
+  {
+    id: 2,
+    title: "TWO Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    desc:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+    img:
+      "https://i.pinimg.com/originals/9f/cb/15/9fcb152bd04320e612ef1d0430aedef4.jpg",
+  },
+  {
+    id: 3,
+    title: "THREE Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    desc:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+    img:
+      "https://i.pinimg.com/originals/c7/08/2d/c7082ded52fcc69aa208da06108b822b.jpg",
+  },
+  {
+    id: 4,
+    title: "FOUR Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    desc:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+    img:
+      "https://i.pinimg.com/originals/9f/cb/15/9fcb152bd04320e612ef1d0430aedef4.jpg",
+  },
+];
 
 const Menu = () => {
-    return (
-        <div className="menu">
-        <h1>Other posts you may like</h1>
-        {posts.map((post) => (
-            <div className="post" key={post.id}>
-            <img src={`../upload/${post?.img}`} alt="" />
-            <h2>{post.title}</h2>
-            <button>Read More</button>
-            </div>
-        ))}
+  return (
+    <div className="menu">
+      <h1>Other posts you may like</h1>
+      {posts.map((post) => (
+        <div className="post" key={post.id}>
+          <img src={post?.img} alt="" />
+          <h2>{post.title}</h2>
+          <button>Read More</button>
+        </div>
+      ))}
     </div>
-    )
-}
+  );
+};
 
-export default Menu
+export default Menu;
