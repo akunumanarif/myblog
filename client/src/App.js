@@ -2,13 +2,13 @@ import React from "react";
 import {
   createBrowserRouter,
   RouterProvider,
-  Router,
+  //Router,
   Outlet,
 } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import Api from "./pages/Api";
+//import Api from "./pages/Api";
 import Single from "./pages/Single";
 import Write from "./pages/Write";
 import Navbar from "./components/Navbar";
