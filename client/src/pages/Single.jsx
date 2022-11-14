@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Edit from "../img/edit.png";
 import Delete from "../img/delete.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Menu from "../components/Menu";
 import axios from "axios";
 import moment from "moment";
@@ -11,6 +11,7 @@ const Single = () => {
   const [post, setPost] = useState({});
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const postID = location.pathname.split("/")[2];
 
@@ -28,15 +29,21 @@ const Single = () => {
 
     fetchData();
   }, [postID]);
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`/posts${postID}`);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="single">
       <div className="content">
         <img src={post?.img} alt="" />
         <div className="user">
-          <img
-            src="https://scontent.fsub1-1.fna.fbcdn.net/v/t1.6435-1/52368327_2191906547533762_6917859791662481408_n.jpg?stp=dst-jpg_s200x200&_nc_cat=105&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeFKVEXhVClMbuXJVGfSAsVrPMgulNIstxM8yC6U0iy3E21dBKxY-mtvodjs-K2Xv51OQKWsuOwTbQSC6biz7S9O&_nc_ohc=8RmGf14t7msAX87l0FW&_nc_ht=scontent.fsub1-1.fna&oh=00_AfBrUogrOfEi2Y7IqP4V_lc2stjrisF9NZzEnuyvSzvgKQ&oe=6398942F"
-            alt=""
-          />
+          {post.userImg && <img src={post.userImg} alt="" />}
           <div className="info">
             <span>{post.username}</span>
             <p>Posted {moment(post.date).fromNow()}</p>
@@ -46,7 +53,7 @@ const Single = () => {
               <Link to={`/write?edit=2`}>
                 <img src={Edit} alt="" />
               </Link>
-              <img src={Delete} alt="" />
+              <img onClick={handleDelete} src={Delete} alt="" />
             </div>
           )}
         </div>
