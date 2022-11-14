@@ -13,14 +13,14 @@ const Single = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const postID = location.pathname.split("/")[2];
+  const postId = location.pathname.split("/")[2];
 
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts${postID}`);
+        const res = await axios.get(`/posts/${postId}`);
         setPost(res.data);
       } catch (error) {
         console.log(error);
@@ -28,11 +28,11 @@ const Single = () => {
     };
 
     fetchData();
-  }, [postID]);
+  }, [postId]);
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/posts${postID}`);
+      await axios.delete(`/posts/${postId}`);
       navigate("/");
     } catch (error) {
       console.log(error);
