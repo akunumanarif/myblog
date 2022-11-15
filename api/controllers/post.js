@@ -31,7 +31,7 @@ export const addPost = (req, res) => {
     if (err) return res.status(403).json("Invalid Token");
 
     const q =
-      "INSERT INTO posts (`title`, `desc`, `img`, `cat`, `date`, `uid`,) VALUE = (?)";
+      "INSERT INTO posts(`title`, `desc`, `img`, `cat`, `date`,`uid`) VALUES (?)";
 
     const values = [
       req.body.title,
@@ -66,22 +66,23 @@ export const deletePost = (req, res) => {
     });
   });
 };
+
 export const updatePost = (req, res) => {
   const token = req.cookies.access_token;
-  if (!token) return res.status(401).json("Not Authenticated");
+  if (!token) return res.status(401).json("Not authenticated!");
 
   jwt.verify(token, "jwtkey", (err, userInfo) => {
-    if (err) return res.status(403).json("Invalid Token");
+    if (err) return res.status(403).json("Token is not valid!");
 
     const postId = req.params.id;
     const q =
-      "UPDATE posts SET `title`=?, `desc`=?, `img`=?, `cat`=? WHERE `id` = ? AND `uid` = ?";
+      "UPDATE posts SET `title`=?,`desc`=?,`img`=?,`cat`=? WHERE `id` = ? AND `uid` = ?";
 
     const values = [req.body.title, req.body.desc, req.body.img, req.body.cat];
 
     db.query(q, [...values, postId, userInfo.id], (err, data) => {
       if (err) return res.status(500).json(err);
-      return res.json("Post has been updated");
+      return res.json("Post has been updated.");
     });
   });
 };
